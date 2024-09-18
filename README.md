@@ -117,6 +117,8 @@ Then, run the script using Node.js:
 node app.js
 ```
 
+![running a script](/Screenshot8.png)
+
 
 
 ##  Node.js Modules
