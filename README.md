@@ -31,8 +31,8 @@
     - [Callbacks](#callbacks)
     - [Promises](#promises)
     - [Async/Await](#asyncawait)
-8. [Debugging ](#debugging)
-    - [Debugging Node.js Applications](#debugging-nodejs-applications)
+8. [Conclusion](#conclusion)
+9. [Reference Links](#references)
     
 
 
@@ -68,24 +68,33 @@ Node.js is a runtime environment that allows you to run JavaScript code on the s
     ```bash
     sudo apt update
     ```
+    ![sudo apt update](/Screenshot1.png)
+
+
 2. Install Node.js and npm (Node Package Manager):
     ```bash
     sudo apt install nodejs npm
     ```
+    ![nodejs and nvm installation](/Screenshot2.png)
 
 #### Using Node Version Manager (NVM)
 1. Install NVM:
     ```bash
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     ```
+    ![nvm installation](/Screenshot3.png)
+
 2. Load NVM:
     ```bash
     source ~/.bashrc
     ```
+    ![reload](/Screenshot4.png)
+
 3. Install the latest version of Node.js:
     ```bash
     nvm install node
     ```
+    ![node installation](/Screenshot5.png)
 
 ### Verifying Installation
 Check the installed version of Node.js and npm:
@@ -93,6 +102,7 @@ Check the installed version of Node.js and npm:
 node -v
 npm -v
 ```
+![node and nvm version check](/Screenshot6.png)
 
 ## Basic Usage of Node.js
 
@@ -101,6 +111,13 @@ Create a file `app.js`:
 ```javascript
 console.log('Hello, Node.js!');
 ```
+
+Then, run the script using Node.js:
+```javascript
+node app.js
+```
+
+
 
 ##  Node.js Modules
 
@@ -145,6 +162,7 @@ To install a package globally, use the `-g` flag. This makes the package availab
 ```bash
 npm install -g nodemon
 ```
+![global package installation](/Screenshot7.png)
 
 ## Building a Simple Web Server
 
@@ -216,20 +234,38 @@ fs.readFile('example.txt', 'utf8', (err, data) => {
   console.log('File content:', data);
 });
 ```
+### Promises
+Promises provide a cleaner way to handle asynchronous operations compared to callbacks. They represent the eventual result of an asynchronous operation.
 
-## Debugging and Testing
+- **Example of using a promise**
+```javascript
+const fsPromises = require('fs').promises;
 
-Debugging and testing are essential parts of the development process to ensure your Node.js applications work as expected. Node.js provides various tools and techniques for debugging and testing your code.
+fsPromises.readFile('example.txt', 'utf8')
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+  ```
 
-### Debugging Node.js Applications
+### Async/Await
+Async/Await is a modern way to write asynchronous code, built on top of promises, and makes the code more readable.
 
-- **Using the Built-in Debugger**- 
-Node.js includes a built-in debugger that you can use to step through your code and inspect its state.
+- **Example using async/await**
+```javascript
+const fs = require('fs').promises;
 
-Start the Node.js debugger by running:
-```bash
-node inspect your_script.js
+async function readFile() {
+  try {
+    const data = await fs.readFile('example.txt', 'utf8');
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+readFile();
 ```
+
+
 
 ## Conclusion
 
@@ -251,5 +287,4 @@ Here are some useful resources that I used to make this document:
 
 - [Node.js Official Documentation](https://nodejs.org/en/docs/)
 - [MDN Web Docs for JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
 
